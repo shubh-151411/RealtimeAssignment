@@ -43,7 +43,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
     'Next Tuesday',
     'After 1 week'
   ];
-  List<String?> listToDate = ['NoDate', 'Today'];
+  List<String?> listToDate = ['No Date', 'Today'];
   DateFormat format = DateFormat("dd MMM yyyy");
 
   @override
@@ -326,6 +326,8 @@ class _CalendarDialogState extends State<CalendarDialog> {
                               if (_selectedDay != null) {
                                 widget.onTap!(DateFormat('d MMM y')
                                     .format(_selectedDay ?? DateTime.now()));
+                              } else {
+                                widget.onTap!("");
                               }
 
                               Navigator.pop(

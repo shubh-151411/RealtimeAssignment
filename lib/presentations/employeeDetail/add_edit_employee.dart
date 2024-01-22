@@ -292,9 +292,14 @@ class _AddorEditEmployeeState extends State<AddorEditEmployee> {
                                     fromDate: formDate,
                                     isNoDate: false,
                                     onTap: (value) {
-                                      // formDate = value;
-                                      employeeBloc?.add(
-                                          SelectToDateEvent(toDate: value));
+                                      if (value?.isNotEmpty ?? false) {
+                                        employeeBloc?.add(
+                                            SelectToDateEvent(toDate: value));
+                                      }else{
+                                        employeeBloc?.add(
+                                            SelectToDateEvent(toDate: ""));
+
+                                      }
                                     },
                                   );
                                 },
