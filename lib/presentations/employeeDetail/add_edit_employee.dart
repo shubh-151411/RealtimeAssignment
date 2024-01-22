@@ -162,7 +162,9 @@ class _AddorEditEmployeeState extends State<AddorEditEmployee> {
                               child: Padding(
                             padding: const EdgeInsets.only(left: 5.0),
                             child: Text(
-                              (role?.isEmpty ?? true) ? "Select Role" : role ?? '',
+                              (role?.isEmpty ?? true)
+                                  ? "Select Role"
+                                  : role ?? '',
                               style: normalTextStyle.copyWith(
                                   color: (role?.isNotEmpty ?? false)
                                       ? textColor
@@ -208,7 +210,9 @@ class _AddorEditEmployeeState extends State<AddorEditEmployee> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return CalendarDialog(
-                                    activeDate: "",
+                                    activeDate: widget?.employeeData?.fromDate,
+                                    selectedDate: formDate,
+                                    isNoDate: true,
                                     onTap: (value) {
                                       // formDate = value;
                                       employeeBloc?.add(
@@ -283,7 +287,10 @@ class _AddorEditEmployeeState extends State<AddorEditEmployee> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return CalendarDialog(
-                                    activeDate: "",
+                                    activeDate: widget?.employeeData?.toDate,
+                                    selectedDate: toDate,
+                                    fromDate: formDate,
+                                    isNoDate: false,
                                     onTap: (value) {
                                       // formDate = value;
                                       employeeBloc?.add(
